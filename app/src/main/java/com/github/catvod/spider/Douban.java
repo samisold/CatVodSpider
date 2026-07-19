@@ -9,16 +9,11 @@ import com.github.catvod.crawler.Spider;
 import com.github.catvod.net.OkHttp;
 import com.github.catvod.utils.Json;
 import com.github.catvod.utils.Util;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Douban extends Spider {
 
@@ -36,9 +31,10 @@ public class Douban extends Spider {
     }
 
     @Override
-    public void init(Context context, String extend) throws Exception {
+    public void init(Context context, String extend) {
         this.extend = extend;
     }
+
 
     @Override
     public String homeContent(boolean filter) throws Exception {
@@ -64,39 +60,39 @@ public class Douban extends Spider {
                 sort = extend.get("sort") == null ? "recommend" : extend.get("sort");
                 String area = extend.get("area") == null ? "全部" : extend.get("area");
                 sort = sort + "&area=" + URLEncoder.encode(area);
-                cateUrl = siteUrl + "/movie/hot_gaia" + apikey + "&sort=" + sort + "&start=" + start + "&count=20";
+                cateUrl = siteUrl + "/movie/hot_gaia" + apikey + "&sort=" + sort + "&start=" + start + "&count=50";
                 break;
             case "tv_hot":
                 String type = extend.get("type") == null ? "tv_hot" : extend.get("type");
-                cateUrl = siteUrl + "/subject_collection/" + type + "/items" + apikey + "&start=" + start + "&count=20";
+                cateUrl = siteUrl + "/subject_collection/" + type + "/items" + apikey + "&start=" + start + "&count=50";
                 itemKey = "subject_collection_items";
                 break;
             case "show_hot":
                 String showType = extend.get("type") == null ? "show_hot" : extend.get("type");
-                cateUrl = siteUrl + "/subject_collection/" + showType + "/items" + apikey + "&start=" + start + "&count=20";
+                cateUrl = siteUrl + "/subject_collection/" + showType + "/items" + apikey + "&start=" + start + "&count=50";
                 itemKey = "subject_collection_items";
                 break;
             case "tv":
-                cateUrl = siteUrl + "/tv/recommend" + apikey + "&sort=" + sort + "&tags=" + tags + "&start=" + start + "&count=20";
+                cateUrl = siteUrl + "/tv/recommend" + apikey + "&sort=" + sort + "&tags=" + tags + "&start=" + start + "&count=50";
                 break;
             case "rank_list_movie":
                 String rankMovieType = extend.get("榜单") == null ? "movie_real_time_hotest" : extend.get("榜单");
-                cateUrl = siteUrl + "/subject_collection/" + rankMovieType + "/items" + apikey + "&start=" + start + "&count=20";
+                cateUrl = siteUrl + "/subject_collection/" + rankMovieType + "/items" + apikey + "&start=" + start + "&count=50";
                 itemKey = "subject_collection_items";
                 break;
             case "rank_list_tv":
                 String rankTVType = extend.get("榜单") == null ? "tv_real_time_hotest" : extend.get("榜单");
-                cateUrl = siteUrl + "/subject_collection/" + rankTVType + "/items" + apikey + "&start=" + start + "&count=20";
+                cateUrl = siteUrl + "/subject_collection/" + rankTVType + "/items" + apikey + "&start=" + start + "&count=50";
                 itemKey = "subject_collection_items";
                 break;
             default:
-                cateUrl = siteUrl + "/movie/recommend" + apikey + "&sort=" + sort + "&tags=" + tags + "&start=" + start + "&count=20";
+                cateUrl = siteUrl + "/movie/recommend" + apikey + "&sort=" + sort + "&tags=" + tags + "&start=" + start + "&count=50";
                 break;
         }
         JSONObject object = new JSONObject(OkHttp.string(cateUrl, getHeader()));
         JSONArray array = object.getJSONArray(itemKey);
         List<Vod> list = parseVodListFromJSONArray(array);
-        int page = Integer.parseInt(pg), count = Integer.MAX_VALUE, limit = 20, total = Integer.MAX_VALUE;
+        int page = Integer.parseInt(pg), count = Integer.MAX_VALUE, limit = 50, total = Integer.MAX_VALUE;
         return Result.get().vod(list).page(page, count, limit, total).string();
     }
 
