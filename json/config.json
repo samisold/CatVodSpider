@@ -36,35 +36,11 @@
       "filterable": 1
     },
     {
-      "key": "W55Movie",
-      "name": "\uD83C\uDF9E\uFE0F 555电影 | 搜索×",
-      "type": 3,
-      "api": "csp_W55Movie",
-      "searchable": 0,
-      "filterable": 1
-    },
-    {
-      "key": "DaGongRen",
-      "name": "\uD83D\uDC77\u200D♂\uFE0F 打工人电影 | 影视",
-      "type": 3,
-      "api": "csp_DaGongRen",
-      "searchable": 1,
-      "filterable": 1
-    },
-    {
       "key": "HkTv",
       "name": "☁\uFE0F TVB云播 | 影视",
       "type": 3,
       "api": "csp_HkTv",
       "searchable": 0,
-      "filterable": 1
-    },
-    {
-      "key": "JustLive",
-      "name": "\uD83D\uDCFA\uFE0F JustLive | 直播",
-      "type": 3,
-      "api": "csp_JustLive",
-      "searchable": 1,
       "filterable": 1
     },
     {
@@ -84,38 +60,6 @@
       "filterable": 1
     },
     {
-      "key": "Jianpian",
-      "name": "\uD83D\uDCC0 荐片 | 视频",
-      "type": 3,
-      "api": "csp_Jianpian",
-      "searchable": 1,
-      "filterable": 1
-    },
-    {
-      "key": "Ying",
-      "name": "\uD83C\uDF38 樱花动漫 | 动漫",
-      "type": 3,
-      "api": "csp_Ying",
-      "searchable": 1,
-      "filterable": 1
-    },
-    {
-      "key": "Ysj",
-      "name": "\uD83C\uDF0F\uFE0F 异世界动漫 | 动漫",
-      "type": 3,
-      "api": "csp_Ysj",
-      "searchable": 1,
-      "filterable": 1
-    },
-    {
-      "key": "FirstAid",
-      "name": "\uD83D\uDCAA 健康 | 视频",
-      "type": 3,
-      "api": "csp_FirstAid",
-      "searchable": 1,
-      "filterable": 1
-    },
-    {
       "key": "nangua",
       "name": "🎃┃南瓜影视┃🎃",
       "playerType": 0,
@@ -130,15 +74,6 @@
       "playerType": 0,
       "type": 3,
       "api": "./js/ikanbot.js",
-      "timeout": 30,
-      "ext": "{\"box\": \"TVBox\", \"danmu\": false}"
-    },
-    {
-      "key": "yizhi",
-      "name": "18请换乘（index.json换成index18.json即可）",
-      "playerType": 0,
-      "type": 3,
-      "api": "",
       "timeout": 30,
       "ext": "{\"box\": \"TVBox\", \"danmu\": false}"
     }
